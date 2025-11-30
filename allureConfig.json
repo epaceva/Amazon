@@ -1,0 +1,9 @@
+{
+  "allure": {
+    "directory": "allure-results",
+    "title": "Amazon Automation Report",
+    "links": [
+      "https://github.com/allure-framework/allure-csharp"
+    ]
+  }
+}

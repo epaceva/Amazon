@@ -1,0 +1,13 @@
+# Build folders
+bin/
+obj/
+
+# Test results
+TestResults/
+allure-results/
+allure-report/
+
+# User settings
+*.user
+*.suo
+.vs/
