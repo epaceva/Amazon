@@ -3,11 +3,6 @@
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple)
 ![Selenium](https://img.shields.io/badge/Selenium-WebDriver-green)
 ![SpecFlow](https://img.shields.io/badge/SpecFlow-BDD-orange)
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-
-A robust automated testing framework for **Amazon.co.uk**, built with **C#**, **Selenium WebDriver**, and **SpecFlow (BDD)**. 
-
-This project demonstrates modern QA automation practices including the **Page Object Model (POM)** design pattern, dynamic element handling, and comprehensive reporting via **Allure**.
 
 ## 🚀 Tech Stack
 
@@ -18,23 +13,6 @@ This project demonstrates modern QA automation practices including the **Page Ob
 * **Reporting:** Allure Report
 * **Browser Management:** WebDriverManager
 * **CI/CD:** GitHub Actions (Headless Chrome execution)
-
-## ✨ Key Features
-Robust Page Objects: Handles dynamic Amazon elements (e.g., Book format swatches, Buy Box variations).
-
-Smart Waiting: Uses explicit waits (WaitHelpers) to eliminate flakiness.
-
-Resilience:
-
-Auto-handles "Accept Cookies" banners.
-
-Dismisses "Deliver to..." location popups.
-
-Handles "Soft Bot Checks" (Continue Shopping screens).
-
-Cross-Currency Support: Logic to handle price verification in both GBP (£) and local currencies (e.g., BGN) based on IP location.
-
-CI/CD Ready: Automatically detects environment variables to switch between Headless (for GitHub Actions) and UI modes.
 
 ## 🛠️ Prerequisites
 To run this project locally, ensure you have:
