@@ -8,6 +8,9 @@ namespace Amazon.Pages
         // Protected driver instance so child pages can access it
         protected IWebDriver Driver;
 
+        protected const int DefaultWait = 10;
+        protected const int LongWait = 30;
+
         // Constructor to initialize the driver
         public BasePage(IWebDriver driver)
         {

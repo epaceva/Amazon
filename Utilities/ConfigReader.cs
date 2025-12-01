@@ -21,5 +21,10 @@ namespace Amazon.Utilities
         {
             return _configuration["AppConfig:BaseUrl"];
         }
+
+        public static string GetBrowser()
+        {
+            return _configuration["AppConfig:Browser"];
+        }
     }
 }

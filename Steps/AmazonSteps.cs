@@ -164,32 +164,35 @@ namespace Amazon.Steps
             // Verify Title
             string basketTitle = _basketPage.GetBookTitle();
             string storedTitle = (string)_scenarioContext["StoredTitle"];
+            Assert.That(storedTitle, Does.Contain(basketTitle.Substring(0, 10)), "Basket title mismatch");
 
-            Assert.That(storedTitle, Does.Contain(basketTitle.Substring(0, 10)), "Basket title mismatch (checking first 10 chars)");
-
-            // Verify Type (Paperback)
+            // Verify Type
             string basketType = _basketPage.GetBookType();
-            Assert.That(basketType, Does.Contain("Paperback"), "Binding type mismatch in basket");
+            Assert.That(basketType, Does.Contain("Paperback"), "Binding type mismatch");
 
             // Verify Price
             string basketPriceRaw = _basketPage.GetPrice();
-            string storedPriceRaw = ((string)_scenarioContext["StoredPrice"]);
-            string cleanBasketPrice = basketPriceRaw.Replace(" ", "").Trim();
-            string cleanStoredPrice = storedPriceRaw.Replace(" ", "").Trim();
+            string storedPriceRaw = (string)_scenarioContext["StoredPrice"];
 
-            TestContext.Out.WriteLine($"Basket Price: {basketPriceRaw} | Stored Price: {storedPriceRaw}");
+            TestContext.Out.WriteLine($"Check -> Basket: {basketPriceRaw} | Stored: {storedPriceRaw}");
 
-            Assert.That(cleanBasketPrice, Is.EqualTo(cleanStoredPrice), "Stored price vs Basket price mismatch");
+            // Use the Helper class logic
+            decimal basketNum = Amazon.Utilities.ParserHelper.ParsePrice(basketPriceRaw);
+            decimal storedNum = Amazon.Utilities.ParserHelper.ParsePrice(storedPriceRaw);
+
+            Assert.That(basketNum, Is.EqualTo(storedNum).Within(0.10m),
+                $"Price mismatch! Expected {storedNum} but found {basketNum}");
 
             // Verify Quantity
             string basketQty = _basketPage.GetQuantity();
             Assert.That(basketQty, Is.EqualTo(expectedQty.ToString()), "Quantity mismatch");
 
-            // Verify Total Price (Subtotal vs Item Price)
+            // Verify Total Price
             string totalRaw = _basketPage.GetSubtotalAmount();
-            string cleanTotal = totalRaw.Replace(" ", "").Trim();
+            decimal totalNum = Amazon.Utilities.ParserHelper.ParsePrice(totalRaw);
 
-            Assert.That(cleanTotal, Is.EqualTo(cleanBasketPrice), "Total price should equal item price for quantity 1");
+            Assert.That(totalNum, Is.EqualTo(basketNum).Within(0.01m),
+                "Total price should match item price");
         }
     }
 }

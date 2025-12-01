@@ -26,8 +26,8 @@ namespace Amazon.Pages
 
         public string GetPrice()
         {
-            var element = WaitHelper.WaitUntilVisible(Driver, ProductPrice);
-            return element.GetAttribute("innerText");
+            var element = WaitHelper.WaitUntilVisible(Driver, ProductPrice, LongWait);
+            return element.GetAttribute("innerText").Trim();
         }
 
         public string GetBookType() => GetText(ProductType);

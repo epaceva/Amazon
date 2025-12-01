@@ -21,13 +21,13 @@ namespace Amazon.Pages
         {
             Driver.Navigate().GoToUrl(url);
 
-            // 1. Check for Bot Check
+            // Check for Bot Check
             HandleBotCheck();
 
-            // 2. Accept Cookies
+            // Accept Cookies
             AcceptCookies();
 
-            // 3. Dismiss Delivery Location Notification
+            // Dismiss Delivery Location Notification
             DismissDeliveryNotification();
         }
 

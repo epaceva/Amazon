@@ -3,6 +3,9 @@ using Amazon.Drivers;
 using BoDi;
 using OpenQA.Selenium;
 using TechTalk.SpecFlow;
+using System;
+using System.IO;
+using Allure.Net.Commons;
 
 namespace Amazon.Hooks
 {
@@ -12,7 +15,6 @@ namespace Amazon.Hooks
         private readonly IObjectContainer _objectContainer;
         private BrowserDriver _browserDriver;
 
-        // Constructor Injection: SpecFlow gives us the container
         public GeneralHooks(IObjectContainer objectContainer)
         {
             _objectContainer = objectContainer;
@@ -21,21 +23,40 @@ namespace Amazon.Hooks
         [BeforeScenario]
         public void InitializeWebDriver()
         {
-            // Create the driver management instance
             _browserDriver = new BrowserDriver();
-
-            // Initialize Chrome
             IWebDriver driver = _browserDriver.Initialize();
-
-            // Register the driver instance in the container
             _objectContainer.RegisterInstanceAs<IWebDriver>(driver);
         }
 
         [AfterScenario]
         public void TearDownWebDriver()
         {
-            // Close the browser after the test finishes
             _browserDriver?.Cleanup();
         }
+
+        [AfterStep]
+        public void InsertReportingSteps(ScenarioContext scenarioContext)
+        {
+            if (scenarioContext.TestError != null)
+            {
+                try
+                {
+                    var driver = _objectContainer.Resolve<IWebDriver>();
+                    var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+
+                    string filename = $"{Guid.NewGuid()}.png";
+                    string filePath = Path.Combine(Path.GetTempPath(), filename);
+
+                    screenshot.SaveAsFile(filePath);
+                    byte[] fileContent = File.ReadAllBytes(filePath);
+
+                    AllureApi.AddAttachment("Failure Screenshot", "image/png", fileContent);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error taking screenshot: " + e.Message);
+                }
+            }
+        }
     }
-} 
+}
