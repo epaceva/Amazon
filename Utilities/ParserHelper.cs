@@ -11,7 +11,7 @@ namespace Amazon.Utilities
             if (string.IsNullOrEmpty(priceText))
                 return 0.0m;
 
-            string clean = Regex.Replace(priceText, "[^0-9.,]", "");
+            string clean = GeneratedRegexAttribute.Replace(priceText, "[^0-9.,]", "");
 
             clean = clean.Replace(",", ".");
 

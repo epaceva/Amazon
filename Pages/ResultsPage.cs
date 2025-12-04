@@ -7,10 +7,10 @@ namespace Amazon.Pages
 {
     public class ResultsPage : BasePage
     {
-        private By FirstResultTitle => By.CssSelector("div[data-component-type='s-search-result'] h2 span");
-        private By FirstResultType => By.CssSelector("div[data-component-type='s-search-result'] .a-row.a-size-base.a-color-base");
-        private By FirstResultPrice => By.CssSelector("div[data-component-type='s-search-result'] .a-price span[aria-hidden='true']");
-        private By ResultBadgeText => By.CssSelector("div[data-component-type='s-search-result'] .a-badge-text");
+        private static By FirstResultTitle => By.CssSelector("div[data-component-type='s-search-result'] h2 span");
+        private static By FirstResultType => By.CssSelector("div[data-component-type='s-search-result'] .a-row.a-size-base.a-color-base");
+        private static By FirstResultPrice => By.CssSelector("div[data-component-type='s-search-result'] .a-price span[aria-hidden='true']");
+        private static By ResultBadgeText => By.CssSelector("div[data-component-type='s-search-result'] .a-badge-text");
 
         public ResultsPage(IWebDriver driver) : base(driver) { }
 

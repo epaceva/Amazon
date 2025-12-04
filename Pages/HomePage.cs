@@ -8,12 +8,12 @@ namespace Amazon.Pages
     public class HomePage : BasePage
     {
         // Selectors
-        private By CookieAcceptButton => By.Id("sp-cc-accept");
-        private By SearchDropdown => By.Id("searchDropdownBox");
-        private By SearchBox => By.Id("twotabsearchtextbox");
-        private By SearchButton => By.Id("nav-search-submit-button");
-        private By BotCheckButton => By.XPath("//*[contains(text(), 'Continue shopping')]");
-        private By DeliveryDismissButton => By.XPath("//*[@data-action-type='DISMISS']");
+        private static By CookieAcceptButton => By.Id("sp-cc-accept");
+        private static By SearchDropdown => By.Id("searchDropdownBox");
+        private static By SearchBox => By.Id("twotabsearchtextbox");
+        private static By SearchButton => By.Id("nav-search-submit-button");
+        private static By BotCheckButton => By.XPath("//*[contains(text(), 'Continue shopping')]");
+        private static By DeliveryDismissButton => By.XPath("//*[@data-action-type='DISMISS']");
 
         public HomePage(IWebDriver driver) : base(driver) { }
 

@@ -103,7 +103,7 @@ namespace Amazon.Steps
         public void TheBookTitleOnDetailsPageShouldMatchTheSearchResult()
         {
             string detailsTitle = _detailsPage.GetTitle();
-            Assert.That(detailsTitle.Length > 0, Is.True, "Title on details page is empty.");
+            Assert.That(Is.GreaterThan > 0, Is.True, "Title on details page is empty.");
         }
 
         [Then(@"I verify if the book has a badge on the details page")]

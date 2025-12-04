@@ -6,19 +6,19 @@ namespace Amazon.Pages
 {
     public class ProductDetailsPage : BasePage
     {
-        private By ProductTitle => By.Id("productTitle");
-        private By ProductPrice => By.XPath("//div[@id='tmm-grid-swatch-PAPERBACK']//span[contains(text(), '£') or contains(text(), 'BGN')]");
-        private By ProductType => By.Id("subtitle");
-        private By AddToBasketButton => By.Id("add-to-cart-button");
-        private By AddedMessage => By.XPath("//*[contains(text(), 'Added to Basket')]");
-        private By CartCount => By.Id("nav-cart-count");
-        private By EditBasketButton => By.XPath("//span[@id='sw-gtc']");
-        private By SubtotalLabel => By.XPath("//*[@id='nav-cart-count-container']");
+        private static By ProductTitle => By.Id("productTitle");
+        private static By ProductPrice => By.XPath("//div[@id='tmm-grid-swatch-PAPERBACK']//span[contains(text(), '£') or contains(text(), 'BGN')]");
+        private static By ProductType => By.Id("subtitle");
+        private static By AddToBasketButton => By.Id("add-to-cart-button");
+        private static By AddedMessage => By.XPath("//*[contains(text(), 'Added to Basket')]");
+        private static By BasketCount => By.Id("nav-cart-count");
+        private static By EditBasketButton => By.XPath("//span[@id='sw-gtc']");
+        private static By SubtotalLabel => By.XPath("//*[@id='nav-cart-count-container']");
 
 
-        private By LookInsideElement => By.Id("sitbLogoImg");
-        private By LookInsideText => By.XPath("//div[@id='img-canvas']//span[contains(text(),'Look inside')]");
-        private By DetailsBadge => By.CssSelector(".a-icon-text-fba, .a-badge-text, #zeitgeistBadge_feature_div");
+        private static By LookInsideElement => By.Id("sitbLogoImg");
+        private static By LookInsideText => By.XPath("//div[@id='img-canvas']//span[contains(text(),'Look inside')]");
+        private static By DetailsBadge => By.CssSelector(".a-icon-text-fba, .a-badge-text, #zeitgeistBadge_feature_div");
 
         public ProductDetailsPage(IWebDriver driver) : base(driver) { }
 

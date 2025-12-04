@@ -6,11 +6,11 @@ namespace Amazon.Pages
 {
     public class BasketPage : BasePage
     {
-        private By BasketItemTitle => By.CssSelector("span[class=\"a-truncate sc-grid-item-product-title a-size-base-plus\"] span[class=\"a-truncate-cut\"]");
-        private By BasketItemType => By.CssSelector(".sc-product-binding");
-        private By BasketItemPrice => By.CssSelector(".sc-product-price");
-        private By BasketItemQuantity => By.CssSelector("span[data-a-selector=\"value\"]");
-        private By BasketSubtotalPrice => By.Id("sc-subtotal-amount-activecart");
+        private static By BasketItemTitle => By.CssSelector("span[class=\"a-truncate sc-grid-item-product-title a-size-base-plus\"] span[class=\"a-truncate-cut\"]");
+        private static By BasketItemType => By.CssSelector(".sc-product-binding");
+        private static By BasketItemPrice => By.CssSelector(".sc-product-price");
+        private static By BasketItemQuantity => By.CssSelector("span[data-a-selector=\"value\"]");
+        private static By BasketSubtotalPrice => By.Id("sc-subtotal-amount-activecart");
 
         public BasketPage(IWebDriver driver) : base(driver) { }
 
