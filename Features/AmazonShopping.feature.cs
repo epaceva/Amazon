@@ -35,8 +35,8 @@ namespace Amazon.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AmazonShopping", "\tAs a user\r\n\tI want to search for a book on Amazon\r\n\tSo that I can verify its det" +
-                    "ails, badge status, and look inside basket functionality", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "AmazonShopping", "\tAs a user\n\tI want to search for a book on Amazon\n\tSo that I can verify its detai" +
+                    "ls, badge status, and look inside basket functionality", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
