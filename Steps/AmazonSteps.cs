@@ -122,6 +122,12 @@ namespace Amazon.Steps
             string cleanStored = storedPrice.Trim();
 
             TestContext.Out.WriteLine($"Price check - Stored: {cleanStored}, Current: {cleanCurrent}");
+
+            decimal currentVal = Amazon.Utilities.ParserHelper.ParsePrice(cleanCurrent);
+            decimal storedVal = Amazon.Utilities.ParserHelper.ParsePrice(cleanStored);
+
+            Assert.That(currentVal, Is.EqualTo(storedVal).Within(0.01m),
+        $"Price mismatch on Details Page! Expected {storedVal} but found {currentVal}");
         }
 
         [When(@"I add the book to the basket")]
@@ -164,7 +170,8 @@ namespace Amazon.Steps
             // Verify Title
             string basketTitle = _basketPage.GetBookTitle();
             string storedTitle = (string)_scenarioContext["StoredTitle"];
-            Assert.That(storedTitle, Does.Contain(basketTitle.Substring(0, 10)), "Basket title mismatch");
+            Assert.That(storedTitle.ToLower(), Does.Contain(basketTitle.ToLower()), 
+        "Basket title does not match the stored product title");
 
             // Verify Type
             string basketType = _basketPage.GetBookType();
